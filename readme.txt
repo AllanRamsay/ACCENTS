@@ -24,13 +24,13 @@ ACCENTS;
 +-----------+--------------+------+-----+---------+-------+
 | Field     | Type         | Null | Key | Default | Extra |
 +-----------+--------------+------+-----+---------+-------+
-| speaker   | varchar(255) | YES  |     | NULL    |       |
-| accent    | varchar(255) | YES  |     | NULL    |       |
-| annotator | varchar(255) | YES  |     | NULL    |       |
+| SPEAKER   | varchar(255) | YES  |     | NULL    |       |
+| ACCENT    | varchar(255) | YES  |     | NULL    |       |
+| ANNOTATOR | varchar(255) | YES  |     | NULL    |       |
 +-----------+--------------+------+-----+---------+-------+
 
 Each row in ACCENTS corresponds to a single annotation, where
-annotator has marked speaker as having accent.
+ANNOTATOR has marked SPEAKER as having ACCENT.
 
 SPEAKERS;
 +-------+--------------+------+-----+---------+-------+
@@ -53,10 +53,10 @@ RECORDINGS;
 
 RECORDINGS links speakers to the files that contain their utterances:
 a single speaker will typically have several recordings. The
-recordings themselves are the GALE recordings split into short split
-into segments, where each file corresponds to a time-stamped segment
-from one of the GALE files. The GALE data itself is provided through
-the LDC -- we cannot distribute this data.
+recordings themselves are the GALE recordings split into short
+segments, where each file corresponds to a time-stamped segment from
+one of the GALE files. The GALE data itself is provided through the
+LDC -- we cannot distribute this data.
 
 ...
 test-ALAM_IRAQNOW_ARB_20070802_092801-male-speaker3 | ../../NEWACCENTS/wav/test-ALAM_IRAQNOW_ARB_20070802_092801-male-speaker3-native-5.wav  
@@ -107,14 +107,14 @@ the Unix ffmpeg utility, wrapped up in a script called
 flac2wav.py. This is called with two arguments, the location where the
 .flac files are stored (which will typically be a directory with a
 name like gale_p3_bn_speech_p1/data (for broadcast news) or
-gale_p3_bnc_speech_p1/data (for broadcast speech)) and the location
+gale_p3_bc_speech_p1/data (for broadcast speech)) and the location
 where we want the wav files to go (usually gale_p3_bn_speech_p1/wav or
 gale_p3_bc_speech_p1/wav).
 
 $ ./flac2wav.py src=gale_p3_bn_speech_p1/data dest=gale_p3_bn_speech_p1/wav
 
 (make sure you've got lots of space -- there are several hundred hours
-of recordings in these files, so they take up quite a bit work)
+of recordings in these files, so they take up quite a bit of space)
 
 **********************************************************************
 segments.py; once we've got the original recordings as .wav files, we
@@ -143,7 +143,7 @@ ARABIYA_LATEHRNEWS_ARB_20070227_000000, the Buckwalter version of
 these, and the Madamira output for them (assuming that you have
 Madamira installed, otherwise this obviously won't work)
 
-There will also be folder called TEMP/wav which contains the .wav
+There will also be a folder called TEMP/wav which contains the .wav
 files for each of these segments.
 
 
